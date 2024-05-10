@@ -1,4 +1,4 @@
-import logo from "./logo.svg";
+import React from "react";
 import "./App.css";
 import { createWeb3Modal, defaultConfig } from "@web3modal/ethers/react";
 import { BrowserProvider, Contract, parseUnits } from "ethers";
@@ -8,7 +8,7 @@ import { usdcContractABI } from "./utils/constantsToken.js";
 ///------------------ Wallet Connection Configuration --------------------------------
 
 // 1. Get projectId
-const projectId = "e1399140821c5499d4f45eadfddd74aa";
+const projectId = process.env.REACT_APP_projectId;
 
 // 2. Set chains
 const amoy = {
