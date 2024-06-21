@@ -18,7 +18,7 @@ export function PayoutComponent() {
     try {
       // Fetch JSON data from an external source
       const response = await fetch(
-        "https://raw.githubusercontent.com/AbelOsaretin/Payout-Frontend-V3/main/src/data.json"
+        "https://promptearn.com/adm/dataj/data35.json"
       );
       if (!response.ok) {
         throw new Error("Failed to fetch data");
