@@ -95,6 +95,19 @@ export const contractABI = [
     inputs: [
       {
         internalType: "address",
+        name: "itAddress_",
+        type: "address",
+      },
+    ],
+    name: "addITAddress",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
         name: "",
         type: "address",
       },
@@ -112,6 +125,11 @@ export const contractABI = [
   },
   {
     inputs: [
+      {
+        internalType: "address",
+        name: "_spender",
+        type: "address",
+      },
       {
         internalType: "uint256",
         name: "_amount",
@@ -143,12 +161,25 @@ export const contractABI = [
     type: "function",
   },
   {
+    inputs: [
+      {
+        internalType: "address",
+        name: "tokenAddress",
+        type: "address",
+      },
+    ],
+    name: "changeTokenAddress",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
     inputs: [],
     name: "contractAllowance",
     outputs: [
       {
         internalType: "uint256",
-        name: "allowanceData",
+        name: "allowanceAmount",
         type: "uint256",
       },
     ],
@@ -201,31 +232,6 @@ export const contractABI = [
   },
   {
     inputs: [],
-    name: "getAllPayees",
-    outputs: [
-      {
-        components: [
-          {
-            internalType: "address",
-            name: "payees",
-            type: "address",
-          },
-          {
-            internalType: "uint256",
-            name: "amount",
-            type: "uint256",
-          },
-        ],
-        internalType: "struct Payout.PayeesAndAmount[]",
-        name: "",
-        type: "tuple[]",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
     name: "getAllWithdrawals",
     outputs: [
       {
@@ -250,13 +256,19 @@ export const contractABI = [
     type: "function",
   },
   {
-    inputs: [],
-    name: "itAddress",
-    outputs: [
+    inputs: [
       {
         internalType: "address",
         name: "",
         type: "address",
+      },
+    ],
+    name: "itAddress",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
       },
     ],
     stateMutability: "view",
@@ -278,6 +290,19 @@ export const contractABI = [
   {
     inputs: [
       {
+        internalType: "address",
+        name: "itAddress_",
+        type: "address",
+      },
+    ],
+    name: "removeITAddress",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
         internalType: "address[]",
         name: "recipients",
         type: "address[]",
@@ -291,6 +316,19 @@ export const contractABI = [
     name: "sendUSDC",
     outputs: [],
     stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "token",
+    outputs: [
+      {
+        internalType: "contract IERC20",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
     type: "function",
   },
   {
@@ -325,4 +363,4 @@ export const contractABI = [
     type: "function",
   },
 ];
-export const contractAddress = "0x338C6d1cb45e10DE870d672C16e96c59f6006b7e";
+export const contractAddress = "0x716dC432c6DacF7b70ac430BF43EcE6F62165083";

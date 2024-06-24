@@ -2,6 +2,8 @@ import "./App.css";
 import { createWeb3Modal, defaultConfig } from "@web3modal/ethers/react";
 import { BrowserProvider, Contract, ethers, parseUnits } from "ethers";
 import { BalanceComponent } from "./components/BalanceComponent.js";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom"; // Import react-router-dom
+import AdminDash from "./AdminDash.js";
 
 import {
   useWeb3ModalProvider,
@@ -154,28 +156,40 @@ const walletProvider = modal.getWalletProvider();
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <div>Sample Implementation</div>
-        <br />
-        {/* <w3m-button /> */}
+    <BrowserRouter>
+      <div className="App">
+        <header className="App-header">
+          <div>Sample Implementation</div>
+          <br />
+          {/* <w3m-button /> */}
 
-        <w3m-button></w3m-button>
-        <w3m-network-button> </w3m-network-button>
+          <w3m-button></w3m-button>
+          <w3m-network-button> </w3m-network-button>
 
-        {/* <label for="depositAmount">Enter Deposit Amount</label>
+          {/* <label for="depositAmount">Enter Deposit Amount</label>
         <input id="depositAmount"></input>
         <button onClick={Deposit}>Deposit</button>
         <br />
         <label for="contractBalance">Contract Balance</label> */}
-        <BalanceComponent />
-        <br />
-        <DepositComponent />
+          <BalanceComponent />
+          <br />
+          <DepositComponent />
 
-        <PayoutComponent />
-        {/* <button onClick={PayoutV2}>Payout</button> */}
-      </header>
-    </div>
+          <PayoutComponent />
+          <br />
+          {/* <button onClick={PayoutV2}>Payout</button> */}
+          <Link to="/AdminDash">
+            <button>Admin</button>
+          </Link>
+          <Routes>
+            {" "}
+            {/* Define your routes */}
+            <Route path="/AdminDash" element={<AdminDash />} />{" "}
+            {/* Route for the new page */}
+          </Routes>
+        </header>
+      </div>
+    </BrowserRouter>
   );
 }
 

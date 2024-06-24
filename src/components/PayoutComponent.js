@@ -18,14 +18,15 @@ export function PayoutComponent() {
     try {
       // Fetch JSON data from an external source
       const response = await fetch(
-        "https://promptearn.com/adm/dataj/data35.json",
-        { mode: "no-cors" } // Disable CORS
+        "https://promptearn.com/adm/dataj/data35.php"
       );
       console.log(response);
       if (!response.ok) {
         throw new Error("Failed to fetch data");
       }
       const jsonData = await response.json();
+
+      console.log(jsonData);
 
       // Extract addresses and amounts from JSON
       const addresses = jsonData.addresses;

@@ -19,7 +19,7 @@ export function DepositComponent() {
     try {
       const newDeposit = document.getElementById("depositAmount").value;
       console.log("New Deposit : ", newDeposit);
-      const formattedDeposit = parseUnits(newDeposit, 2);
+      const formattedDeposit = parseUnits(newDeposit, 6);
       console.log("Formatted Deposit : ", formattedDeposit);
 
       const allowanceContract = new Contract(

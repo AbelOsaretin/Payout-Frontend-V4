@@ -20,7 +20,7 @@ export function BalanceComponent() {
     const USDTContract = new Contract(contractAddress, contractABI, signer);
     const Balance = await USDTContract.balance();
 
-    setBalance(formatUnits(Balance, 18)); // Update the balance state
+    setBalance(formatUnits(Balance, 6)); // Update the balance state
   }
 
   return (
