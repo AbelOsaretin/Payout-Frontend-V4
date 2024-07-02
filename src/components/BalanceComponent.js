@@ -24,8 +24,8 @@ export function BalanceComponent() {
   }
 
   return (
-    <div>
-      <p>Current Balance: {balance ? balance : ""}</p>{" "}
+    <div className="balance-container">
+      <p className="balance-text">Current Balance: {balance ? balance : ""}</p>{" "}
       <button className="all-buttons" onClick={getBalance}>
         Get Balance
       </button>{" "}

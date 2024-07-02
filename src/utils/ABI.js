@@ -1,366 +1,206 @@
 export const contractABI = [
   {
+    type: "constructor",
     inputs: [
-      {
-        internalType: "address",
-        name: "_usdcAddress",
-        type: "address",
-      },
-      {
-        internalType: "address",
-        name: "_itAddress",
-        type: "address",
-      },
+      { name: "_usdcAddress", type: "address", internalType: "address" },
+      { name: "_itAddress", type: "address", internalType: "address" },
     ],
     stateMutability: "nonpayable",
-    type: "constructor",
   },
   {
-    anonymous: false,
+    type: "function",
+    name: "addAdmin",
+    inputs: [{ name: "admins_", type: "address", internalType: "address" }],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "addITAddress",
+    inputs: [{ name: "itAddress_", type: "address", internalType: "address" }],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "administrators",
+    inputs: [{ name: "", type: "address", internalType: "address" }],
+    outputs: [{ name: "", type: "bool", internalType: "bool" }],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "approveDeposit",
     inputs: [
+      { name: "_spender", type: "address", internalType: "address" },
+      { name: "_amount", type: "uint256", internalType: "uint256" },
+    ],
+    outputs: [{ name: "", type: "bool", internalType: "bool" }],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "balance",
+    inputs: [],
+    outputs: [{ name: "", type: "uint256", internalType: "uint256" }],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "changeTokenAddress",
+    inputs: [
+      { name: "tokenAddress", type: "address", internalType: "address" },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "contractAllowance",
+    inputs: [],
+    outputs: [
+      { name: "allowanceAmount", type: "uint256", internalType: "uint256" },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "deposit",
+    inputs: [{ name: "amount_", type: "uint256", internalType: "uint256" }],
+    outputs: [{ name: "", type: "bool", internalType: "bool" }],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "getAllDeposits",
+    inputs: [],
+    outputs: [
       {
-        indexed: true,
-        internalType: "address",
         name: "",
-        type: "address",
-      },
-      {
-        indexed: true,
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
+        type: "tuple[]",
+        internalType: "struct Payout.DepositorsAndAmount[]",
+        components: [
+          { name: "depositors", type: "address", internalType: "address" },
+          { name: "amount", type: "uint256", internalType: "uint256" },
+        ],
       },
     ],
-    name: "DepositSuccessful",
-    type: "event",
+    stateMutability: "view",
   },
   {
+    type: "function",
+    name: "getAllWithdrawals",
+    inputs: [],
+    outputs: [
+      {
+        name: "",
+        type: "tuple[]",
+        internalType: "struct Payout.WithdrawalsAndAmount[]",
+        components: [
+          { name: "withdrawals", type: "address", internalType: "address" },
+          { name: "amount", type: "uint256", internalType: "uint256" },
+        ],
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "itAddress",
+    inputs: [{ name: "", type: "address", internalType: "address" }],
+    outputs: [{ name: "", type: "bool", internalType: "bool" }],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "removeAdmin",
+    inputs: [{ name: "admins_", type: "address", internalType: "address" }],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "removeITAddress",
+    inputs: [{ name: "itAddress_", type: "address", internalType: "address" }],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "sendUSDC",
+    inputs: [
+      { name: "recipients", type: "address[]", internalType: "address[]" },
+      { name: "amounts", type: "uint256[]", internalType: "uint256[]" },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "token",
+    inputs: [],
+    outputs: [{ name: "", type: "address", internalType: "contract IERC20" }],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "usdcAddress",
+    inputs: [],
+    outputs: [{ name: "", type: "address", internalType: "address" }],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "withdraw",
+    inputs: [
+      { name: "to_", type: "address", internalType: "address" },
+      { name: "amount_", type: "uint256", internalType: "uint256" },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "event",
+    name: "DepositSuccessful",
+    inputs: [
+      { name: "", type: "address", indexed: true, internalType: "address" },
+      { name: "", type: "uint256", indexed: true, internalType: "uint256" },
+    ],
     anonymous: false,
+  },
+  {
+    type: "event",
+    name: "PayoutSuccessful",
     inputs: [
       {
-        indexed: true,
-        internalType: "address",
         name: "Payer",
         type: "address",
+        indexed: true,
+        internalType: "address",
       },
       {
-        indexed: true,
-        internalType: "address[]",
         name: "Payees",
         type: "address[]",
+        indexed: true,
+        internalType: "address[]",
       },
       {
-        indexed: true,
-        internalType: "uint256[]",
         name: "Amount",
         type: "uint256[]",
-      },
-    ],
-    name: "PayoutSuccessful",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
         indexed: true,
-        internalType: "address",
-        name: "",
-        type: "address",
-      },
-      {
-        indexed: true,
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-    ],
-    name: "WithdrawalSuccessful",
-    type: "event",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "admins_",
-        type: "address",
-      },
-    ],
-    name: "addAdmin",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "itAddress_",
-        type: "address",
-      },
-    ],
-    name: "addITAddress",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "",
-        type: "address",
-      },
-    ],
-    name: "administrators",
-    outputs: [
-      {
-        internalType: "bool",
-        name: "",
-        type: "bool",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "_spender",
-        type: "address",
-      },
-      {
-        internalType: "uint256",
-        name: "_amount",
-        type: "uint256",
-      },
-    ],
-    name: "approveDeposit",
-    outputs: [
-      {
-        internalType: "bool",
-        name: "",
-        type: "bool",
-      },
-    ],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "balance",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "tokenAddress",
-        type: "address",
-      },
-    ],
-    name: "changeTokenAddress",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "contractAllowance",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "allowanceAmount",
-        type: "uint256",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "uint256",
-        name: "amount_",
-        type: "uint256",
-      },
-    ],
-    name: "deposit",
-    outputs: [
-      {
-        internalType: "bool",
-        name: "",
-        type: "bool",
-      },
-    ],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "getAllDeposits",
-    outputs: [
-      {
-        components: [
-          {
-            internalType: "address",
-            name: "depositors",
-            type: "address",
-          },
-          {
-            internalType: "uint256",
-            name: "amount",
-            type: "uint256",
-          },
-        ],
-        internalType: "struct Payout.DepositorsAndAmount[]",
-        name: "",
-        type: "tuple[]",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "getAllWithdrawals",
-    outputs: [
-      {
-        components: [
-          {
-            internalType: "address",
-            name: "withdrawals",
-            type: "address",
-          },
-          {
-            internalType: "uint256",
-            name: "amount",
-            type: "uint256",
-          },
-        ],
-        internalType: "struct Payout.WithdrawalsAndAmount[]",
-        name: "",
-        type: "tuple[]",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "",
-        type: "address",
-      },
-    ],
-    name: "itAddress",
-    outputs: [
-      {
-        internalType: "bool",
-        name: "",
-        type: "bool",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "admins_",
-        type: "address",
-      },
-    ],
-    name: "removeAdmin",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "itAddress_",
-        type: "address",
-      },
-    ],
-    name: "removeITAddress",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address[]",
-        name: "recipients",
-        type: "address[]",
-      },
-      {
         internalType: "uint256[]",
-        name: "amounts",
-        type: "uint256[]",
       },
     ],
-    name: "sendUSDC",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
+    anonymous: false,
   },
   {
-    inputs: [],
-    name: "token",
-    outputs: [
-      {
-        internalType: "contract IERC20",
-        name: "",
-        type: "address",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "usdcAddress",
-    outputs: [
-      {
-        internalType: "address",
-        name: "",
-        type: "address",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
+    type: "event",
+    name: "WithdrawalSuccessful",
     inputs: [
-      {
-        internalType: "address",
-        name: "to_",
-        type: "address",
-      },
-      {
-        internalType: "uint256",
-        name: "amount_",
-        type: "uint256",
-      },
+      { name: "", type: "address", indexed: true, internalType: "address" },
+      { name: "", type: "uint256", indexed: true, internalType: "uint256" },
     ],
-    name: "withdraw",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
+    anonymous: false,
   },
 ];
-export const contractAddress = "0x716dC432c6DacF7b70ac430BF43EcE6F62165083";
+export const contractAddress = "0x565BA7dBDA9685594Db52f9e34A7827492BE340d";

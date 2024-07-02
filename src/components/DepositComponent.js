@@ -1,3 +1,5 @@
+
+
 import {
   useWeb3ModalProvider,
   useWeb3ModalAccount,
@@ -47,28 +49,33 @@ export function DepositComponent() {
       const contract = new Contract(contractAddress, contractABI, signer);
       const transaction = await contract.deposit(formattedDeposit);
       await transaction.wait();
+      // Display a notification after successful transaction
+      alert("Deposit Transaction Successful!"); // You can use a more sophisticated notification library here
       console.log("Amount Deposited!", transaction);
     } catch (error) {
       console.log(error);
     }
   }
   return (
-    <div>
-      <label for="depositAmount">Enter Deposit Amount</label>
-      <br />
-      <input
-        id="depositAmount"
-        style={{
-          width: "200px",
-          padding: "10px",
-          border: "1px solid #ccc",
-          borderRadius: "5px",
-        }}
-      ></input>
-      <br />
-      <button className="all-buttons" onClick={addDeposit}>
-        Deposit
-      </button>{" "}
+    <div className="component-container">
+      <div className="deposit-container">
+        <label htmlFor="depositAmount">Enter Deposit Amount</label>
+        <br />
+        <input
+          id="depositAmount"
+          type="number"
+          style={{
+            width: "200px",
+            padding: "10px",
+            border: "1px solid #ccc",
+            borderRadius: "5px",
+          }}
+        />
+        <br />
+        <button className="all-buttons" onClick={addDeposit}>
+          Deposit
+        </button>
+      </div>
     </div>
   );
 }

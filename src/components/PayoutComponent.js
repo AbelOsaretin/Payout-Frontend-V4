@@ -17,8 +17,13 @@ export function PayoutComponent() {
 
     try {
       // Fetch JSON data from an external source
+
+      // const response = await fetch(
+      //   "https://promptearn.com/adm/dataj/data35.php"
+      // );
+
       const response = await fetch(
-        "https://promptearn.com/adm/dataj/data35.php"
+        "https://raw.githubusercontent.com/AbelOsaretin/Payout-Frontend-V3/main/src/data.json"
       );
       console.log(response);
       if (!response.ok) {
@@ -28,15 +33,23 @@ export function PayoutComponent() {
 
       console.log(jsonData);
 
-      // Extract addresses and amounts from JSON
+      // Extract addresses and amounts from JSON and format using parseUints
       const addresses = jsonData.addresses;
       const amounts = jsonData.amounts;
-      console.log("Address and amount", addresses, amounts);
+
+      // Map over the amounts array and convert each element to a string
+      const formattedAmounts = amounts.map((amount) =>
+        parseUnits(amount.toString(), 6)
+      );
+
+      console.log("Address and amount", addresses, formattedAmounts);
 
       try {
         const contract = new Contract(contractAddress, contractABI, signer);
-        // const formattedDeposit = new ethers.parseUnits(`${newDeposit}`, "6");
-        const transaction = await contract.sendUSDC(addresses, amounts);
+        const transaction = await contract.sendUSDC(
+          addresses,
+          formattedAmounts
+        );
         await transaction.wait();
         console.log("Payout Transaction Successful!", transaction);
 
@@ -54,11 +67,13 @@ export function PayoutComponent() {
     }
   }
   return (
-    <div>
-      <p>Send Payout to Payees</p>
-      <button className="all-buttons" onClick={sendPayout}>
-        Send Payout
-      </button>
+    <div className="component-container">
+      <div className="payout-container">
+        <p>Send Payout to Payees</p>
+        <button className="all-buttons" onClick={sendPayout}>
+          Send Payout
+        </button>
+      </div>
     </div>
   );
 }

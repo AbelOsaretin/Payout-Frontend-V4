@@ -25,4 +25,4 @@ export const usdcContractABI = [
   },
 ];
 
-export const usdcContractAddress = "0x6FB45998F7c4E3157D1Ab8F19Da2a108AAa9f1df";
+export const usdcContractAddress = "0x3c499c542cef5e3811e1192ce70d8cc03d5c3359";
