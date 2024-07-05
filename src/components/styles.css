@@ -22,10 +22,10 @@
   margin-bottom: 10px;
 }
 
-.balance-text {
+/* .balance-text {
   font-size: 16px;
   font-weight: bold;
-}
+} */
 
 .component-container {
   display: flex;
@@ -67,4 +67,9 @@
   display: flex;
   flex-direction: row; /* Arrange elements in a column */
   align-items: center; /* Center elements horizontally */
+}
+
+.table-container {
+  overflow-y: auto; /* Enable vertical scrolling */
+  height: 200px; /* Set a fixed height for the container */
 }

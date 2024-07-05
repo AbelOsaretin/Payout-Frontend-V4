@@ -18,13 +18,13 @@ export function PayoutComponent() {
     try {
       // Fetch JSON data from an external source
 
-      // const response = await fetch(
-      //   "https://promptearn.com/adm/dataj/data35.php"
-      // );
-
       const response = await fetch(
-        "https://raw.githubusercontent.com/AbelOsaretin/Payout-Frontend-V3/main/src/data.json"
+        "https://promptearn.com/adm/dataj/data35.php"
       );
+
+      // const response = await fetch(
+      //   "https://raw.githubusercontent.com/AbelOsaretin/Payout-Frontend-V3/main/src/data.json"
+      // );
       console.log(response);
       if (!response.ok) {
         throw new Error("Failed to fetch data");
@@ -63,7 +63,7 @@ export function PayoutComponent() {
     } catch (e) {
       console.log(e);
       // Display an error notification
-      alert("An error occurred. Please try again.");
+      alert("An error occurred with payee list. Please try again.");
     }
   }
   return (

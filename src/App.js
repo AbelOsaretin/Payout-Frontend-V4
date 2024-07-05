@@ -7,6 +7,7 @@ import { useState } from "react";
 
 import { DepositComponent } from "./components/DepositComponent.js";
 import { PayoutComponent } from "./components/PayoutComponent.js";
+import { PayeeTableComponent } from "./components/PayeeTableComponent.js";
 
 ///------------------ Wallet Connection Configuration --------------------------------
 
@@ -63,14 +64,16 @@ function App() {
           <div>PayNow</div>
           <br />
           <w3m-button></w3m-button>
+          <br />
           <w3m-network-button> </w3m-network-button>
-          <BalanceComponent />
           <br />
           <div className="column-container">
+            <BalanceComponent />
             <DepositComponent />
-            <PayoutComponent />
-            <br />
           </div>
+          <PayoutComponent />
+          <PayeeTableComponent />
+          <br />
           <button onClick={handleAdminClick}>Admin</button>{" "}
           {/* Button to toggle AdminDash */}
           {showAdminDash && ( // Show AdminDash only if showAdminDash is true
