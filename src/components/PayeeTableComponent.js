@@ -59,15 +59,17 @@ export function PayeeTableComponent() {
             <table className="payout-table">
               <thead>
                 <tr>
-                  <th>Address</th>
-                  <th>Amount</th>
+                  <th className="column-header">Address</th>
+                  <th className="column-header">Amount</th>
                 </tr>
               </thead>
               <tbody>
                 {payoutData.addresses.map((address, index) => (
                   <tr key={index}>
-                    <td>{address}</td>
-                    <td>{payoutData.amounts[index]}</td>
+                    <td className="column-data">
+                      <div className="address-wrapper">{address}</div>
+                    </td>
+                    <td className="column-data">{payoutData.amounts[index]}</td>
                   </tr>
                 ))}
               </tbody>

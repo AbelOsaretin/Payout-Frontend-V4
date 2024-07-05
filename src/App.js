@@ -13,7 +13,6 @@ import { PayeeTableComponent } from "./components/PayeeTableComponent.js";
 
 // 1. Get projectId
 const projectId = process.env.REACT_APP_PROJECT_ID;
-console.log(projectId);
 
 // 2. Set chains
 const Mainnet = {
@@ -23,8 +22,6 @@ const Mainnet = {
   explorerUrl: "https://polygonscan.com/",
   rpcUrl: process.env.REACT_APP_RPC_URL,
 };
-
-console.log(Mainnet);
 
 // 3. Create a metadata object
 const metadata = {
