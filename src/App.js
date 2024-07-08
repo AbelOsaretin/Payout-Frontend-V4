@@ -64,6 +64,7 @@ function App() {
           <br />
           <w3m-network-button> </w3m-network-button>
           <br />
+          <h3>Payout Address 0x565BA7dBDA9685594Db52f9e34A7827492BE340d</h3>
           <div className="column-container">
             <BalanceComponent />
             <DepositComponent />

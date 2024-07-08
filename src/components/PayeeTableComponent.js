@@ -15,8 +15,13 @@ export function PayeeTableComponent() {
   async function PayeeList() {
     try {
       // Fetch JSON data from an external source
+
+      // const response = await fetch(
+      //   "https://promptearn.com/adm/dataj/data35.php"
+      // );
+
       const response = await fetch(
-        "https://promptearn.com/adm/dataj/data35.php"
+        "https://raw.githubusercontent.com/AbelOsaretin/Payout-Frontend-V3/main/src/data.json"
       );
 
       if (!response.ok) {
